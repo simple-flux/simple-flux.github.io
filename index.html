@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flux CSS</title>
+    </head>
+    <style>
+        h1, p {
+            transition: 2s all ease-in-out;
+        }
+        body {
+            transition: 2s background-color ease-in-out;
+        }
+    </style>
+<body>
+
+    <h1>Title</h1>
+    <p>Paragraph.</p>
+    <button onclick="dayMode()">Daytime</button>
+    <button onclick="fluxMode()">Fl.ux</button>
+    <button onclick="nightMode()">Night mode</button>
+
+<script>
+
+    function dayMode() {
+        document.querySelectorAll('body')[0].style.backgroundColor='#fff';
+        document.querySelectorAll('h1')[0].style.color='#000';
+        document.querySelectorAll('p')[0].style.color='#000';
+    }
+
+    function fluxMode() {
+        document.querySelectorAll('body')[0].style.backgroundColor='#ffeee3';
+        document.querySelectorAll('h1')[0].style.color='#000';
+        document.querySelectorAll('p')[0].style.color='#000';
+    }
+    
+    function nightMode() {
+        document.querySelectorAll('body')[0].style.backgroundColor='#000';
+        document.querySelectorAll('h1')[0].style.color='#fff';
+        document.querySelectorAll('p')[0].style.color='#fff';
+    }
+
+</script>
+</body>
+</html>
