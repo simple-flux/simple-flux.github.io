@@ -15,9 +15,12 @@
 
     <h1>Title</h1>
     <p>Paragraph.</p>
+    <h1>Title 2</h1>
+    <p>Paragraph 2.</p>
     <button onclick="dayMode()">Daytime</button>
     <button onclick="fluxMode()">Fl.ux</button>
     <button onclick="nightMode()">Night mode</button>
+    <button onclick="applyMode('cyan', 'orange')">Test mode</button>
 
 <script>
 
@@ -38,6 +41,48 @@
         document.querySelectorAll('h1')[0].style.color='#fff';
         document.querySelectorAll('p')[0].style.color='#fff';
     }
+
+    const listOfForegroundElements = ['h1', 'p'];
+    const listOfBackgroundElements = ['body'];
+    // const foregroundColor = 'red';
+    // const backgroundColor = 'blue';
+    
+    // Loop through all instances of the given element
+
+    function applyMode(foregroundColor, backgroundColor) {
+        listOfForegroundElements.forEach(function(element) {
+            document.querySelector(element).style.color=foregroundColor;
+        });
+        listOfBackgroundElements.forEach(function(element) {
+            document.querySelector(element).style.backgroundColor=backgroundColor;
+        });
+    }
+
+        // Get client time
+
+    // Calculate brightness
+
+    // Check Accessibility
+
+    // The following is from https://stackoverflow.com/questions/9733288/how-to-programmatically-calculate-the-contrast-ratio-between-two-colors
+    function luminanace(r, g, b) {
+        var a = [r, g, b].map(function (v) {
+            v /= 255;
+            return v <= 0.03928
+                ? v / 12.92
+                : Math.pow( (v + 0.055) / 1.055, 2.4 );
+        });
+        return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+    function contrast(rgb1, rgb2) {
+        return (luminanace(rgb1[0], rgb1[1], rgb1[2]) + 0.05)
+            / (luminanace(rgb2[0], rgb2[1], rgb2[2]) + 0.05);
+    }
+    contrast([255, 255, 255], [255, 255, 0]); // 1.074 for yellow
+    contrast([255, 255, 255], [0, 0, 255]); // 8.592 for blue
+    // minimal recommended contrast ratio is 4.5, or 3 for larger font-sizes
+
+    // End of citation from: // The following is from https://stackoverflow.com/questions/9733288/how-to-programmatically-calculate-the-contrast-ratio-between-two-colors
 
 </script>
 </body>
