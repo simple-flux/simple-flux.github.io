@@ -4,22 +4,27 @@
         <title>Flux CSS</title>
     </head>
     <style>
-        h1, p {
+        h1, p, img {
             transition: 3s all ease-in-out;
         }
         body {
             transition: 3s background-color ease-in-out;
         }
+        img {
+            width:100%;
+        }
     </style>
 <body>
+
+    <button onclick="applyMode('black', 'white')">Daytime</button>
+    <button onclick="applyMode('black', 'yellow')">Fl.ux</button>
+    <button onclick="applyMode('white', 'black')">Night mode</button>
 
     <h1>Title</h1>
     <p>Paragraph.</p>
     <h1>Title 2</h1>
     <p>Paragraph 2.</p>
-    <button onclick="applyMode('black', 'white')">Daytime</button>
-    <button onclick="applyMode('black', 'yellow')">Fl.ux</button>
-    <button onclick="applyMode('white', 'black')">Night mode</button>
+    <img src="https://source.unsplash.com/daily">
 
 <script>
 
@@ -41,8 +46,11 @@
         for (var bg = 0; bg < listOfBackgroundElementTypes.length; ++bg) {
             document.querySelectorAll('body')[bg].style.backgroundColor=backgroundColor;
         }
+        // for (var img = 0; img < listOfForegroundElementTypes.length; ++img) {
+            document.querySelectorAll('img')[0].style.filter="brightness(70%)";
+        // }
     }
-
+    
         // Get client time
 
     // Calculate brightness
