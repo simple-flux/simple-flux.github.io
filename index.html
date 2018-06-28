@@ -17,45 +17,30 @@
     <p>Paragraph.</p>
     <h1>Title 2</h1>
     <p>Paragraph 2.</p>
-    <button onclick="dayMode()">Daytime</button>
-    <button onclick="fluxMode()">Fl.ux</button>
-    <button onclick="nightMode()">Night mode</button>
-    <button onclick="applyMode('cyan', 'orange')">Test mode</button>
+    <button onclick="applyMode('black', 'white')">Daytime</button>
+    <button onclick="applyMode('black', 'orange')">Fl.ux</button>
+    <button onclick="applyMode('white', 'black')">Night mode</button>
 
 <script>
 
-    function dayMode() {
-        document.querySelectorAll('body')[0].style.backgroundColor='#fff';
-        document.querySelectorAll('h1')[0].style.color='#000';
-        document.querySelectorAll('p')[0].style.color='#000';
-    }
-
-    function fluxMode() {
-        document.querySelectorAll('body')[0].style.backgroundColor='#ffeee3';
-        document.querySelectorAll('h1')[0].style.color='#000';
-        document.querySelectorAll('p')[0].style.color='#000';
-    }
-    
-    function nightMode() {
-        document.querySelectorAll('body')[0].style.backgroundColor='#000';
-        document.querySelectorAll('h1')[0].style.color='#fff';
-        document.querySelectorAll('p')[0].style.color='#fff';
-    }
-
-    const listOfForegroundElements = ['h1', 'p'];
-    const listOfBackgroundElements = ['body'];
+    const listOfForegroundElementTypes = ['h1', 'p'];
+    const listOfBackgroundElementTypes = ['body'];
     // const foregroundColor = 'red';
     // const backgroundColor = 'blue';
-    
+
     // Loop through all instances of the given element
 
     function applyMode(foregroundColor, backgroundColor) {
-        listOfForegroundElements.forEach(function(element) {
-            document.querySelector(element).style.color=foregroundColor;
-        });
-        listOfBackgroundElements.forEach(function(element) {
-            document.querySelector(element).style.backgroundColor=backgroundColor;
-        });
+
+        for (var h1 = 0; h1 < listOfForegroundElementTypes.length; ++h1) {
+            document.querySelectorAll('h1')[h1].style.color=foregroundColor;
+        }
+        for (var p = 0; p < listOfForegroundElementTypes.length; ++p) {
+            document.querySelectorAll('p')[p].style.color=foregroundColor;
+        }
+        for (var bg = 0; bg < listOfBackgroundElementTypes.length; ++bg) {
+            document.querySelectorAll('body')[bg].style.backgroundColor=backgroundColor;
+        }
     }
 
         // Get client time
