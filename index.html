@@ -5,7 +5,7 @@
         <title>Flux CSS</title>
     </head>
     <style>
-        h1, p, img {
+        h1, p {
             transition: 3s all ease-in-out;
         }
         body {
@@ -13,13 +13,14 @@
         }
         img {
             width:100%;
+            transition: 3s filter ease-in-out;
         }
     </style>
 <body>
 
-    <button onclick="applyMode('black', 'white')">Daytime</button>
-    <button onclick="applyMode('black', 'yellow')">Fl.ux</button>
-    <button onclick="applyMode('white', 'black')">Night mode</button>
+    <button onclick="lightMode()">Daytime</button>
+    <button onclick="eveningMode()">Fl.ux</button>
+    <button onclick="darkMode()">Night mode</button>
 
     <h1>Title</h1>
     <p>Paragraph.</p>
@@ -34,6 +35,19 @@
     // const foregroundColor = 'red';
     // const backgroundColor = 'blue';
 
+    function darkMode() {
+        applyMode('white', 'black');
+        document.querySelectorAll('img')[0].style.filter="brightness(50%)";
+    }
+    function eveningMode() {
+        applyMode('black', 'yellow')
+        document.querySelectorAll('img')[0].style.filter="brightness(75%)";
+    }
+    function lightMode() {
+        applyMode('black', 'white');
+        document.querySelectorAll('img')[0].style.filter="brightness(100%)";
+    }
+
     // Loop through all instances of the given element
 
     function applyMode(foregroundColor, backgroundColor) {
@@ -47,12 +61,9 @@
         for (var bg = 0; bg < listOfBackgroundElementTypes.length; ++bg) {
             document.querySelectorAll('body')[bg].style.backgroundColor=backgroundColor;
         }
-        // for (var img = 0; img < listOfForegroundElementTypes.length; ++img) {
-            document.querySelectorAll('img')[0].style.filter="brightness(70%)";
-        // }
     }
     
-        // Get client time
+    // Get client time
 
     // Calculate brightness
 
